@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row"><br><br><br><br><br><br></div>
+  <div class="row">
+    <div class="col-xs-10">
+      <app-my-cart-edit
+        (partAdded)="onPartAdded($event)"></app-my-cart-edit>
+      <hr>
+      <ul class="list-group">
+        <a
+          class="list-group-item"
+          style="cursor: pointer"
+          *ngFor="let part of parts"
+        >
+          {{ part.name }} ({{ part.amount }})
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>

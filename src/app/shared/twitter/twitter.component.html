@@ -1,0 +1,12 @@
+<div id="twtl" *ngIf='showTw'>
+  <p>{{ sselectedTeam }}</p>
+  <ng4-twitter-timeline  [dataSrc]="{sourceType: 'profile', screenName: selectedTeam.twitter}"
+                         [opts]="{
+                                  height: '600',
+                                  theme: 'dark',
+                                  linkColor: '##98d9ef',
+                                  chrome: 'noheader nofooter noborders transparent noscrollbar',
+                                  ariaPolite: 'assertive'
+                                  }">
+  </ng4-twitter-timeline>
+</div>

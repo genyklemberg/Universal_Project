@@ -1,0 +1,43 @@
+<header class="pager">
+  <div class="pager-body">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3><span class="brand-font">World Dota2 teams rating</span></h3>
+          <!-- Table -->
+          <div *ngIf="!router.url.includes('map') || screenSize > 700" class="table-responsive scrollingTable">
+            <table class="table" id='myTable'>
+              <thead>
+              <tr>
+                <th>#</th>
+                <th></th>
+                <th>Team Name</th>
+                <th>Win</th>
+                <th>Loose</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let team of teams" routerLinkActive='active'>
+                <td>{{ team.ranking }}</td>
+                <td><img
+                  [src]="team.imgPath"
+                  alt="{{ team.title }}"></td>
+                <td ><a
+                  [routerLink]="['map', team.id]" style='cursor: pointer'>
+                  {{ team.title }}
+                </a></td>
+                <td>{{ team.wins }}</td>
+                <td>{{ team.looses }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
