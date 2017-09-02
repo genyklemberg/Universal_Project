@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng4TwitterTimelineModule } from 'ng4-twitter-timeline/lib/index';
 import { AngularFireModule } from 'angularfire2';
@@ -23,6 +24,7 @@ import { TwitterComponent } from './shared/twitter/twitter.component';
 import {TeamsService} from './services/teams.service';
 
 import { config } from './config/firebase.config';
+import { FbLikeBtnComponent } from './shared/fb-like-btn/fb-like-btn.component';
 
 const firebaseConfig = config;
 
@@ -41,10 +43,12 @@ const firebaseConfig = config;
     HomeComponent,
     TeamsComponent,
     TwitterComponent,
+    FbLikeBtnComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     Ng4TwitterTimelineModule,
     AppRoutingModule,

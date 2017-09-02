@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {TeamsService} from '../../services/teams.service';
 
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './twitter.component.html',
   styleUrls: ['./twitter.component.css']
 })
-export class TwitterComponent implements OnInit, OnDestroy {
+export class TwitterComponent implements OnInit {
   @Input() id: number;
   selectedTeam: Team = {
     id: undefined,
@@ -50,17 +50,7 @@ export class TwitterComponent implements OnInit, OnDestroy {
         }
       );
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-}
-
-  // ngDoCheck() {
-  //   // const TwitTimeline = document.getElementsByTagName('ng4-twitter-timeline')[0];
-  //   // const childNode = document.getElementsByTagName('iframe')[0];
-  //   const parent = document.getElementById('twtl');
-  //   if (this.selectedTeam.id >= 0) {
-  //     console.log(parent);
-  //     // parent.parentNode.removeChild(parent);
-  //   }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
   // }
+}

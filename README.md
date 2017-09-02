@@ -44,9 +44,10 @@ export const config = {
               
 add to app.module:
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { config } from './config/firebase.config';
 const firebaseConfig = config;
-imports: [AngularFireModule.initializeApp(firebaseConfig)]
+imports: [AngularFireModule.initializeApp(firebaseConfig), AngularFireDatabaseModule]
 
 firebase login --interactive
 firebase init
