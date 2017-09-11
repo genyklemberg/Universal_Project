@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {HomeComponent} from '../home/home.component';
 import {ElementsComponent} from '../elements/elements.component';
 import {MyCartComponent} from '../my-cart/my-cart.component';
@@ -13,6 +13,8 @@ const appRoutes: Routes = [
   { path: 'elements', component: ElementsComponent },
   { path: 'my-cart', component: MyCartComponent },
   { path: 'teams/dota2/rankings', component: TeamsComponent, children: [
+    { path: '', component: TwitterComponent },
+    // { path: '', component: TwitterComponent, data: [{isFirst: true}] },
     { path: 'map/:id', component: TwitterComponent }
   ] },
   { path: '**', redirectTo: ''}
@@ -36,7 +38,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     // RouterModule.forRoot(appRoutes, {useHash: true})
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })

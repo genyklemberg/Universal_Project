@@ -70,7 +70,7 @@ export class TeamsService {
   // ];
 
   getTeams(): FirebaseListObservable<Team[]> {
-    return this.teams = this.db.list('/teams');
+    return this.teams = this.db.list('/teams', { query: { orderByChild: '/ranking', startAt: false }});
   }
 
 

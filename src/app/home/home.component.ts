@@ -1,14 +1,27 @@
 import { Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {SubscriberService} from '../services/subscriber.service';
-import {User} from "app/shared/user";
+import {User} from 'app/shared/user';
+import { trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [SubscriberService, AngularFireDatabase]
+  providers: [SubscriberService, AngularFireDatabase],
+  animations: [
+    trigger('myAwesomeAnimation', [
+      state('show', style({
+        opacity: 1,
+      })),
+      state('hide', style({
+        opacity: 0.1,
+      })),
+      transition('show => hide', animate('1000ms ease-in'
+      )),
+    ]),
+  ]
 })
 export class HomeComponent implements OnInit {
   user: User;
@@ -19,6 +32,8 @@ export class HomeComponent implements OnInit {
   message: string;
   date: Date;
   submitted = false;
+  state = 'show';
+  submit = false;
 
   constructor(private subscriberService: SubscriberService) { }
 
@@ -55,13 +70,24 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.name = value.name;
-    this.email = value.email;
-    this.message = value.message;
-    this.date = new Date();
-    this.addUser(this.name, this.email, this.message, this.date);
-    this.subscribeForm.reset();
-    this.submitted = true;
+    let that = this;
+    if ( this.subscribeForm.get('name').valid && this.subscribeForm.get('email').valid) {
+      this.name = value.name;
+      this.email = value.email;
+      this.message = value.message;
+      this.date = new Date();
+      this.addUser(this.name, this.email, this.message, this.date);
+      this.subscribeForm.reset();
+      this.myAnime();
+      window.setTimeout(function() {
+        console.log('work');
+        that.submitted = true;
+      }, 1000);
+    } else { this.submit = true; }
+  }
+
+  myAnime() {
+    this.state = (this.state === 'show' ? 'hide' : 'show');
   }
 
 }

@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { Ng4TwitterTimelineModule } from 'ng4-twitter-timeline/lib/index';
+import { Ng4TwitterTimelineModule } from 'ng4-twitter-timeline/src/ng4-twitter-timeline.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
@@ -50,6 +51,7 @@ const firebaseConfig = config;
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     Ng4TwitterTimelineModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),

@@ -188,7 +188,7 @@ table.myTable {
   border-collapse: collapse;
 }
 .scrollingTable {
-  height: 535px;
+  height: 250px;
   overflow: auto;
 }
 
@@ -218,6 +218,9 @@ table.myTable {
   }
   .pager .pager-body .pager-text {
     font-size: 22px;
+  }
+  .scrollingTable {
+    height: 535px;
   }
 }
 
@@ -469,6 +472,20 @@ button.btn-invite:hover{
   font-weight: 900;
 }
 
+div#submitted {
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 5px;
+  color: black;
+  padding: 10px;
+  height: 170px;
+  text-align: center;
+}
+
+div.linked button.btn-invite {
+  border-radius: 5px;
+}
+
 em#form-label {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -479,9 +496,44 @@ em#form-label {
   color: white;
   font-weight: 400;
 }
+
+.mobFinger {
+  display: none;
+  height: 30px;
+}
 @media (max-width: 767px) {
-  #form-label {
+  span.brand-logo, h3 a {
+    font-size: 0.9em;
+   }
+
+  h4 span {
+    font-size: 1.1em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  table {
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+
+  table th, table td {
+    overflow: hidden;
+  }
+
+  .mobFinger {
+    display: block;
+  }
+
+  #form-label, span.form-control {
     height: auto;
+  }
+
+  .input-group{
+    margin: 10px;
+    width: auto;
   }
 
   .earlyaccess-box .input-group {

@@ -10,7 +10,8 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-twitter',
   templateUrl: './twitter.component.html',
-  styleUrls: ['./twitter.component.css']
+  styleUrls: ['./twitter.component.css'],
+  providers: [Ng4TwitterTimelineService]
 })
 export class TwitterComponent implements OnInit {
   @Input() id: number;

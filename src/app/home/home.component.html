@@ -2,26 +2,33 @@
   <div class="intro-body">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 col-sm-10">
           <h1 class="brand-heading">Your major gaming hub</h1>
           <p class="intro-text">Let's build your own gaming experience<br> together with friends and e-sports community</p>
           <div class="input-group col-md-6 col-xs-6">
-            <form [formGroup]='subscribeForm' (ngSubmit)='onSubmit(subscribeForm.value)'>
-              <em class="form-control" id="form-label">Join our beta list, launching soon.</em>
-              <label class="sr-only" for="name">Name</label>
-              <input type="name" formControlName='name' id="name" name="name" placeholder="Name" class="form-control">
-              <em class="form-control"
-                *ngIf="!subscribeForm.get('name').valid && subscribeForm.get('name').touched"
-                style='background-color: orangered; opacity: 0.8; color: yellow'><i class="fa fa-warning"></i> we will appreciate if you type your name here</em>
-              <label class="sr-only" for="email">Email</label>
-              <input type="email" formControlName='email' id="email" name="email" placeholder="Email" class="form-control">
-              <span class="form-control"
-                *ngIf="!subscribeForm.get('email').valid && subscribeForm.get('email').touched"
-                style='background-color: orangered; opacity: 0.8; color: yellow'><i class="fa fa-warning"></i> please, provide your valid email</span>
-              <textarea id="message" formControlName='message' name="message" placeholder="What you hope to find here?" class="form-control"></textarea>
-
-              <button type="submit" id="btn-starter" class="form-control">SEND</button>
-            </form>
+            <div *ngIf='submitted' id='submitted'><span>Awesome, you're on the list and we'll be in touch soon!</span><br>
+              <img src="../../assets/img/community_img.gif" alt="HTML5 Icon" style="height:100px;">
+            </div>
+            <div [@myAwesomeAnimation]='state'>
+              <form *ngIf='!submitted' [formGroup]='subscribeForm' (ngSubmit)='onSubmit(subscribeForm.value)'>
+                <em class="form-control" id="form-label">Join our beta list, launching soon.</em>
+                <label class="sr-only" for="name">Name</label>
+                <input type="name" formControlName='name' id="name" name="name" placeholder="Name" class="form-control">
+                <span class="form-control"
+                  *ngIf="!subscribeForm.get('name').valid && subscribeForm.get('name').touched"
+                  style='background-color: orangered; opacity: 0.8; color: yellow'><i class="fa fa-warning"></i> we will appreciate if you type your name here</span>
+                <label class="sr-only" for="email">Email</label>
+                <input type="email" formControlName='email' id="email" name="email" placeholder="Email" class="form-control">
+                <span class="form-control"
+                  *ngIf="!subscribeForm.get('email').valid && subscribeForm.get('email').touched"
+                  style='background-color: orangered; opacity: 0.8; color: yellow'><i class="fa fa-warning"></i> please, provide your valid email</span>
+                <textarea id="message" formControlName='message' name="message" placeholder="What you hope to find here?" class="form-control"></textarea>
+                <span class="form-control"
+                      *ngIf="submit && !subscribeForm.get('email').touched && !subscribeForm.get('name').touched"
+                      style='background-color: orangered; opacity: 0.8; color: yellow'><i class="fa fa-warning"></i> please, provide valid info</span>
+                <button type="submit" id="btn-starter" class="form-control">SEND</button>
+              </form>
+            </div>
           </div>
           <a href="#about" class="btn btn-circle page-scroll">
             <i class="fa fa-angle-double-down animated"></i>
@@ -112,7 +119,14 @@
     <div class="container">
       <div class="col-lg-8 col-lg-offset-2">
         <h2>You are playing <span class="light brand-logo">CS, Dota 2, LoL</span> or maybe you are a true fan of <span class="light brand-logo">Blizzard</span> games?</h2>
-        <p>be part of our community to take most of advantages out of the box</p>
+        <div class='linked'>
+          <button
+            routerLink="/teams/dota2/rankings"
+            class="btn btn-color btn-invite"
+          >Enjoy Dota2 for now:)</button>
+        </div>
+
+
         <!--<form id="form" class="form-email" action="" method="post" data-position="main">-->
           <!--<div class="row earlyaccess-box">-->
             <!--<div class="input-group col-md-6 col-xs-6">-->
