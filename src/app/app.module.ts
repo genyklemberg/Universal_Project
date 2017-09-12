@@ -47,7 +47,7 @@ const firebaseConfig = config;
     FbLikeBtnComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'ngLanding'}),
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

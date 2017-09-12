@@ -16,5 +16,8 @@
       "es2016",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule"
   }
 }
