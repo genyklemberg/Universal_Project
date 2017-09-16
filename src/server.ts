@@ -13,7 +13,7 @@ const DIST_FOLDER = join(process.cwd(), 'dist');
 
 const app = express();
 
-const template = readFileSync(join(DIST_FOLDER, 'index.html')).toString();
+const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
 const { AppServerModuleNgFactory } = require('main.server');
 
 app.engine('html', (_, options, callback) => {
